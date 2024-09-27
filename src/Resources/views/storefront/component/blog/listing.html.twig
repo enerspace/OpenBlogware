@@ -18,18 +18,18 @@
          data-listing-options='{{ listingPagination|json_encode }}'>
 
         <div class="cms-element-product-listing">
-            {% if searchResult.total > 0 %}
-                <div class="cms-element-werkl-blog-listing-actions row justify-content-between">
-                    {% block werkl_block_pagination %}
+            {% block werkl_block_pagination %}
+                {% if searchResult.total > 0 %}
+                    <div class="cms-element-werkl-blog-listing-actions row justify-content-between">
                         <div class="col-md-auto">
                             {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
                                 entities: searchResult,
                                 criteria: searchResult.criteria
                             } %}
                         </div>
-                    {% endblock %}
-                </div>
-            {% endif %}
+                    </div>
+                {% endif %}
+            {% endblock %}
 
             {% block werkl_element_blog_listing_row %}
                 <div class="cms-news-full-listing-row js-listing-wrapper">
